@@ -1,0 +1,27 @@
+﻿<Window x:Class="помогите_.ChapterAdd"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:помогите_"
+        mc:Ignorable="d"
+        Title="ChapterAdd" Height="450" Width="800">
+
+    <Grid>
+        <Label Content="Название главы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="chapterTitleTextBox" HorizontalAlignment="Left" Margin="115,18,0,0" VerticalAlignment="Top" Width="199"/>
+
+        <Label Content="Основной текст:" HorizontalAlignment="Left" Margin="10,40,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="chapterTextBox" TextWrapping="Wrap" HorizontalAlignment="Left" Height="50" Margin="120,41,0,0" VerticalAlignment="Top" Width="190"/>
+
+        <Button Content="Сохранить" Click="SaveButton_Click" HorizontalAlignment="Left" Margin="210,100,0,0" VerticalAlignment="Top"/>
+
+
+
+
+
+    </Grid>
+
+
+    </Window>
+    

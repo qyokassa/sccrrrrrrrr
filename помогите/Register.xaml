@@ -1,0 +1,40 @@
+﻿<Window x:Class="помогите_.Register"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:помогите_"
+        mc:Ignorable="d"
+        Title="Register" Height="450" Width="800">
+    <Grid>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Регистрация" FontSize="30" FontWeight="Light" HorizontalAlignment="Center"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Name}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,10,0,145" Background="#FFD2D2D2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Surname}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,77,0,77" Background="#FFD2D2D2"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Login}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,144,0,10" Background="#FFD2D2D2"/>
+        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Password}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,10,0,144" Background="#FFD2D2D2"/>
+
+        <RadioButton Content="Студент" Grid.Column="1" Margin="0,63,100,94" Grid.Row="2"/>
+        <RadioButton IsChecked="{Binding User.Teacher}" Content="Преподаватель" Grid.Column="2" Margin="50,63,24,94" Grid.Row="2"/>
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Вход" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="100" Margin="140,119,0,35" Background="#FFD2D2D2" Click="Button_Click"/>
+    </Grid>
+</Window>
