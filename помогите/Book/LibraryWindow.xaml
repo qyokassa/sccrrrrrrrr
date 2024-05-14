@@ -1,0 +1,36 @@
+﻿<Window x:Class="помогите_.Book.LibraryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:помогите_.Book"
+        mc:Ignorable="d"
+        Title="LibraryWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Кнопки "Добавить книгу" и "Удалить книгу" -->
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Добавить книгу" Click="AddBook_Click" Margin="0,0,10,0"/>
+            <Button x:Name="btnDeleteBook" Content="Удалить книгу" Click="DeleteBook_Click" Margin="0,0,10,0"/>
+            <Button Content="Сохранить изменения" Click="SaveChanges_Click" Margin="0,0,10,0"/>
+            <Button Content="Отменить изменения" Click="CancelChanges_Click" Margin="0,0,10,0"/>
+        </StackPanel>
+
+        <!-- Список книг -->
+        <ListView x:Name="lvBooks" Grid.Row="1" Margin="0, 10, 0, 0" SelectionChanged="lvBooks_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Название книги" DisplayMemberBinding="{Binding Title}"/>
+                    <GridViewColumn Header="Автор" DisplayMemberBinding="{Binding Author}"/>
+                    <GridViewColumn Header="Год выпуска" DisplayMemberBinding="{Binding Year}"/>
+                    <GridViewColumn Header="Аннотация" DisplayMemberBinding="{Binding Annotation}"/>
+                    <GridViewColumn Header="Количество глав" DisplayMemberBinding="{Binding ChapterNumber}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

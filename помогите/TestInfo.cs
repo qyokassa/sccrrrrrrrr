@@ -6,10 +6,13 @@ using System.Threading.Tasks;
 
 namespace помогите_
 {
-    internal class TestInfo
+    public class TestInfo
     {
-        string Name { get; set; }
+        public int ID { get; set; }
+        public string Name { get; set; }
 
-        string NumberOfQuestions { get; set; }
+        public int NumberOfQuestions { get; set; }
+        public int IDAuthor { get; set; }
+        public string Author { get; set; } 
     }
 }

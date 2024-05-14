@@ -35,7 +35,7 @@ namespace помогите_
                 MessageBox.Show("не найден");
                 return;
             }
-            ActiveUser.Instance.Id = User.ID;
+            ActiveUser.Instance.User = User;
             if (User.Teacher)
             {
                 TeacherWindow teacherWindow = new TeacherWindow();

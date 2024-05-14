@@ -7,16 +7,24 @@
         mc:Ignorable="d"
         Title="AddQuestionWindow" Height="450" Width="800">
 
-    <Grid>
+    <Grid DataContext="{Binding Questions}">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <Label Content="Введите вопрос:"/>
-        <TextBox x:Name="questionTextBox" Grid.Row="1" Margin="10,10,10,276"/>
+        <TextBox Text="{Binding QuestionText}" Grid.Row="1"/>
 
-        <Button Content="Сохранить" Grid.Row="2" HorizontalAlignment="Center" Margin="10" Click="SaveButton_Click"/>
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Answers}" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Текст варианта ответа" Width="300" Binding="{Binding Title}"/>
+                <DataGridCheckBoxColumn Header="Правильный ответ" Binding="{Binding Correct}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Сохранить" Grid.Row="3" HorizontalAlignment="Center" Margin="10" Click="SaveButton_Click"/>
     </Grid>
 </Window>

@@ -11,35 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.Win32;
 
 namespace помогите_
 {
     /// <summary>
-    /// Логика взаимодействия для InfoBook.xaml
+    /// Логика взаимодействия для LibraryTest.xaml
     /// </summary>
-    public partial class ChapterAdd : Window
+    public partial class LibraryTest : Window
     {
-
-       
-
-
-        public ChapterAdd()
+        public LibraryTest()
         {
             InitializeComponent();
-        }
-
-        public string? TitleChapter { get; set; }
-        public string? DescriptionChapter { get; set; }
-
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-        Createbook createbook = new Createbook();
-
-            
-
-
-
         }
     }
 }

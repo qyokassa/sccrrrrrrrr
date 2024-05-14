@@ -23,6 +23,7 @@ namespace помогите_
                 mc.Parameters.Add(new MySqlParameter("login", users.Login));
                 mc.ExecuteNonQuery();
             }
+            users.ID= id;
             return id;
         }
 
@@ -50,7 +51,7 @@ namespace помогите_
             return users;
         }
 
-        static UserRepository instance;
+        static UserRepository? instance;
         public static UserRepository Instance
         {
             get

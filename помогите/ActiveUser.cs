@@ -8,9 +8,9 @@ namespace помогите_
 {
     internal class ActiveUser
     {
-        public int Id { get; set; }
+        public Users? User { get; set; }
 
-        static ActiveUser instance;
+        static ActiveUser? instance;
         public static ActiveUser Instance
         {
             get

@@ -35,9 +35,12 @@ namespace помогите_
                 MessageBox.Show("Введите все данные");
                 return;
             }
-            ActiveUser.Instance.Id = UserRepository.Instance.Register(User);
-            if (ActiveUser.Instance.Id == 0)
+            if (UserRepository.Instance.Register(User) == 0)
                 return;
+
+                    ActiveUser.Instance.User = User;
+
+
             if (User.Teacher)
             {
                 TeacherWindow teacherWindow = new TeacherWindow();

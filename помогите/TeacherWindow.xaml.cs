@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using помогите_.Book;
 
 namespace помогите_
 {
@@ -46,9 +47,11 @@ namespace помогите_
 
         private void CreateTextbookButton_Click(object sender, RoutedEventArgs e)
         {
-            Createbook createBook = new Createbook();
-            createBook.Show();
-            this.Close();
+
+          LibraryWindow libraryWindow = new LibraryWindow();
+            libraryWindow.Show();
+               
+
         }
     }
 }

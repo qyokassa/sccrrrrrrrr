@@ -7,11 +7,35 @@
         mc:Ignorable="d"
         Title="AddQuestion" Height="279" Width="441">
     <Grid Margin="0,0,0,-6">
-        <Label Content="Введите вопрос:" Margin="10,10,10,229"/>
-        <TextBox x:Name="txtQuestion" Margin="10,40,10,203" VerticalScrollBarVisibility="Auto"/>
-        <Label Content="Правильный ответ:"  Margin="10,71,10,167"/>
-        <TextBox x:Name="txtCorrectAnswer"  Margin="10,107,10,124"/>
 
-        <Button Content="Сохранить" Click="Save_Click" Margin="77,206,94,20"/>
+        <Grid.RowDefinitions>
+
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+
+
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            
+            
+
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <Label  Content="Введите вопрос:" />
+        <TextBox x:Name="txtQuestion" VerticalScrollBarVisibility="Auto"/>
+        <Label Content="Правильный ответ:" />
+        <TextBox x:Name="txtCorrectAnswer" />
+
+        <Button Content="Сохранить" Click="Save_Click" Width="100" />
     </Grid>
 </Window>

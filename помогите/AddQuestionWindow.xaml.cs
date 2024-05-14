@@ -21,24 +21,24 @@ namespace помогите_
     /// </summary>
     public partial class AddQuestionWindow : Window
     {
+        public Questions Questions { get; set; } = new();
         public AddQuestionWindow()
         {
             InitializeComponent();
-
-            
+            DataContext = this;
         }
 
-
-
-    ObservableCollection<Test> test = new ObservableCollection<Test>();
+        public AddQuestionWindow(Questions? questions)
+        {
+            InitializeComponent();
+            DataContext = this;
+            Questions = questions;
+        }
 
         private void SaveButton_Click(object sender, RoutedEventArgs e)
         {
-            
-
-
-
-
+            DialogResult = true;
+            Close();
         }
 
 
