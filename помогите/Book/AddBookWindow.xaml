@@ -24,38 +24,39 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Название:" Grid.Row="0"/>
-        <TextBox x:Name="txtBookTitle" Grid.Row="0" Margin="100,0,0,0"/>
+        <Label Content="Название:" Grid.Row="0" Background="#FF7E5C4C" FontFamily="Sitka Display" />
+        <TextBox x:Name="txtBookTitle" Grid.Row="0" Margin="100,0,0,0" Text="{Binding Title}" />
 
-        <Label Content="Автор:" Grid.Row="1"/>
-        <TextBox x:Name="txtAuthor" Grid.Row="1" Margin="100,0,0,0"/>
+        <Label Content="Автор:" Grid.Row="1"  Background="#FF7E5C4C" FontFamily="Sitka Display"/>
+        <TextBox x:Name="txtAuthor" Grid.Row="1" Margin="100,0,0,0" Text="{Binding Author}" />
 
-        <Label Content="Год выпуска:" Grid.Row="2"/>
-        <TextBox x:Name="txtYear" Grid.Row="2" Margin="100,0,0,0"/>
+        <Label Content="Год выпуска:" Grid.Row="2" Background="#FF7E5C4C" FontFamily="Sitka Display"/>
+        <TextBox x:Name="txtYear" Text="{Binding Year}" Grid.Row="2" Margin="100,0,0,0"/>
 
-        <Label Content="Аннотация:" Grid.Row="3"/>
-        <TextBox x:Name="txtAnnotation" Grid.Row="3" Margin="100,0,0,0"/>
+        <Label Content="Аннотация:" Grid.Row="3" Background="#FF7E5C4C" FontFamily="Sitka Display"/>
+        <TextBox x:Name="txtAnnotation" Text="{Binding Annotation}" Grid.Row="3" Margin="100,0,0,0" />
 
-        <Label Content="Количество глав:" Grid.Row="4"/>
-        <Label x:Name="labelChapterCount" Grid.Row="4" Margin="100,0,0,0"/>
+        <Label Content="Количество глав:" Grid.Row="4"  Background="#FF7E5C4C" FontFamily="Sitka Display"/>
+        <Label x:Name="labelChapterCount" Grid.Row="4" Margin="100,0,0,0" Background="White"/>
 
-        <Label Content="Список глав:" Grid.Row="5"/>
+        <Label Content="Список глав:" Grid.Row="5" Background="#FFD1B7A6" />
 
-        <ListView x:Name="lvChapters" Grid.Row="6" SelectionChanged="lvChapters_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
-            <ListView.View>
+        <ListView x:Name="lvChapters" Grid.Row="6" SelectionChanged="lvChapters_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" Background="#FFC7A491" FontFamily="Sitka Display" Foreground="Black">
+            <ListView.View >
                 <GridView>
                     <GridViewColumn Header="Название главы" DisplayMemberBinding="{Binding Name}"/>
                 </GridView>
             </ListView.View>
         </ListView>
 
-        <Button Content="Добавить главу" Grid.Row="7" Click="AddChapter_Click" Margin="0,10,0,0" Height="20" VerticalAlignment="Top"/>
+        <Button Content="Добавить главу" Grid.Row="7" Click="AddChapter_Click" Margin="0,10,138,0" Height="20" VerticalAlignment="Top"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
-        <Button x:Name="btnDeleteChapter" Content="Удалить главу" Grid.Row="8" Click="DeleteChapter_Click" Margin="0,10,0,0"/>
+        <Button x:Name="btnDeleteChapter" Content="Удалить главу" Grid.Row="8" Click="DeleteChapter_Click" Margin="0,10,138,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
-        <Button Content="Добавить" Grid.Row="9" Click="AddBook_Click" Margin="0,10,0,0"/>
+        <Button Content="Добавить" Grid.Row="9" Click="AddBook_Click" Margin="0,10,138,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
-        <Button Content="Отмена" Grid.Row="10" Click="Cancel_Click" Margin="0,10,0,0"/>
+        <Button Content="Отмена" Grid.Row="10" Click="Cancel_Click" Margin="0,10,138,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Назад" Grid.Row="10" Click="Назадд_Click" Margin="741,5,10,5"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
     </Grid>
 </Window>

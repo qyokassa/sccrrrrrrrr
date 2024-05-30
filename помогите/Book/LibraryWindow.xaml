@@ -14,14 +14,14 @@
 
         <!-- Кнопки "Добавить книгу" и "Удалить книгу" -->
         <StackPanel Orientation="Horizontal">
-            <Button Content="Добавить книгу" Click="AddBook_Click" Margin="0,0,10,0"/>
-            <Button x:Name="btnDeleteBook" Content="Удалить книгу" Click="DeleteBook_Click" Margin="0,0,10,0"/>
-            <Button Content="Сохранить изменения" Click="SaveChanges_Click" Margin="0,0,10,0"/>
-            <Button Content="Отменить изменения" Click="CancelChanges_Click" Margin="0,0,10,0"/>
+            <Button Content="Добавить книгу" Click="AddBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+            <Button x:Name="btnDeleteBook" Content="Удалить книгу" Click="DeleteBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+            <Button Content="Сохранить изменения" Click="SaveChanges_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+
         </StackPanel>
 
         <!-- Список книг -->
-        <ListView x:Name="lvBooks" Grid.Row="1" Margin="0, 10, 0, 0" SelectionChanged="lvBooks_SelectionChanged" HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch">
+        <ListView x:Name="lvBooks" Grid.Row="1" Margin="0,10,0,0" HorizontalContentAlignment="Stretch" SelectionChanged="lvBooks_SelectionChanged" HorizontalAlignment="Left" Width="770" Height="329" VerticalAlignment="Top">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Название книги" DisplayMemberBinding="{Binding Title}"/>
@@ -32,5 +32,6 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <Button Content="Назад" Click="Назад_Click1" Margin="721,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
     </Grid>
 </Window>

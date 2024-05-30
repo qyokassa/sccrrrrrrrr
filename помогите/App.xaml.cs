@@ -13,5 +13,6 @@ namespace помогите_
     /// </summary>
     public partial class App : Application
     {
+      
     }
 }

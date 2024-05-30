@@ -44,22 +44,6 @@ namespace помогите_.Book
             Chapters = new ObservableCollection<ChapterData>();
         }
 
-        public BookData(string name, string author, int creationYear, string annotation)
-        {
-            if (name == null)
-                throw new NullReferenceException($"{nameof(name)} is null.");
-
-            if (author == null)
-                throw new NullReferenceException($"{nameof(author)} is null.");
-
-            if (annotation == null)
-                throw new NullReferenceException($"{nameof(annotation)} is null.");
-
-            Title = name;
-            Author = author;
-            Annotation = annotation;
-            Year = creationYear;
-            Chapters = new ObservableCollection<ChapterData>();
-        }
+       
     }
 }

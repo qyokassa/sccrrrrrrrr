@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Configuration;
+using System.Windows.Annotations;
 using Microsoft.Data.Sqlite;
 using MySqlConnector;
+using static System.Net.Mime.MediaTypeNames;
 
 
 namespace помогите_.Book
@@ -10,7 +13,7 @@ namespace помогите_.Book
     {
 
 
-        static  LibraryDataBase instance;
+        static LibraryDataBase instance;
         public static LibraryDataBase Instance
         {
             get
@@ -31,7 +34,7 @@ namespace помогите_.Book
 
         public Library Library { get; set; }
 
-        public LibraryDataBase(Connection MySqlDBconnection, Library library)
+        public LibraryDataBase( MySqlConnection  MySqlDBconnection, Library library)
         {
             Connection = connection;
             Library = library;
@@ -81,6 +84,7 @@ namespace помогите_.Book
             }
         }
 
+
         public void ReadAll()
         {
             try
@@ -111,7 +115,8 @@ namespace помогите_.Book
                         Library.Books.Add(bookData);
                     }
 
-                    
+
+
                 }
 
                 reader.Close();
@@ -122,51 +127,12 @@ namespace помогите_.Book
             }
         }
 
-        public void WriteAll()
-        {
-            try
-            {
-                Connection.Open();
 
-                for (int bookIndex = 0; bookIndex < Library.Books.Count; bookIndex++)
-                {
-                    BookData bookData = Library.Books[bookIndex];
 
-                    SQLiteCommand command = new SQLiteCommand("DELETE FROM books; DELETE FROM chapters;", Connection);
-                    command.ExecuteNonQuery();
 
-                    command = new SQLiteCommand(
-                    @"INSERT INTO books (title, author, release_year, annotation) 
-                    VALUES (@title, @author, @release_year, @annotation);
-                    ", Connection);
 
-                    
 
-                    command.ExecuteNonQuery();
 
-                    for (int chapterIndex = 0; chapterIndex < bookData.Chapters.Count; chapterIndex++)
-                    {
-                        BookData.ChapterData chapterData = bookData.Chapters[chapterIndex];
 
-                        command = new SQLiteCommand(
-                        @"INSERT INTO chapters (book_id, title, content)
-                        VALUES (@book_id, @title, @content);
-                        ", Connection);
-
-                       
-
-                        command.ExecuteNonQuery();
-                    }
-                }
-            }
-            finally
-            {
-                Connection?.Close();
-            }
-        }
-    }
-
-    public class Connection
-    {
     }
 }

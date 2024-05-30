@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 
 namespace помогите_.Book
 {
@@ -33,6 +34,8 @@ namespace помогите_.Book
             _bookToAdd = new BookData();
 
             InitializeComponent();
+
+            DataContext=BookRepository.Instance;
 
             btnDeleteChapter.IsEnabled = false;
             lvChapters.ItemsSource = _bookToAdd.Chapters;
@@ -67,56 +70,31 @@ namespace помогите_.Book
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
         {
-            
+           
+
+            if (!int.TryParse(txtYear.Text, out int year))
             {
-                // Создаем список невалидных полей
-                List<string> invalidFields = new List<string>();
-
-                // Проверяем заполнение поля "Название"
-                if (string.IsNullOrEmpty(txtBookTitle.Text))
-                    invalidFields.Add("\"Название\"");
-
-                // Проверяем заполнение поля "Автор"
-                if (string.IsNullOrEmpty(txtAuthor.Text))
-                    invalidFields.Add("\"Автор\"");
-
-                // Проверяем заполнение поля "Год выпуска"
-                if (string.IsNullOrEmpty(txtYear.Text))
-                    invalidFields.Add("\"Год выпуска\"");
-
-                // Проверяем заполнение поля "Аннотация"
-                if (string.IsNullOrEmpty(txtAnnotation.Text))
-                    invalidFields.Add("\"Аннотация\"");
-
-                // Если есть невалидные поля, выводим сообщение и завершаем метод
-                if (invalidFields.Count > 0)
-                {
-                    MessageBox.Show($"Заполните поля {string.Join(", ", invalidFields)}");
-                    return;
-                }
-
-                // Пытаемся преобразовать год выпуска в число
-                if (!int.TryParse(txtYear.Text, out int year))
-                {
-                    MessageBox.Show($"Вы ввели неверные значения в поле \"Год выпуска\"");
-                    return;
-                }
-
-                // Заполняем информацию о книге
-                _bookToAdd.Title = txtBookTitle.Text;
-                _bookToAdd.Author = txtAuthor.Text;
-                _bookToAdd.Year = year;
-                _bookToAdd.Annotation = txtAnnotation.Text;
-
-                // Добавляем книгу в библиотеку
-                _library.Books.Add(_bookToAdd);
-
-                // Выводим сообщение об успешном добавлении книги
-                MessageBox.Show("Книга успешно добавлена");
-
-                // Закрываем окно
-                Close();
+                MessageBox.Show($"Вы ввели неверные значения в поле \"Год выпуска\"");
+                return;
             }
+
+            _bookToAdd.Title = txtBookTitle.Text;
+            _bookToAdd.Author = txtAuthor.Text;
+            _bookToAdd.Year = year;
+            _bookToAdd.Annotation = txtAnnotation.Text;
+
+           
+            
+           _library.Books.Add(_bookToAdd);
+
+
+
+
+
+
+            MessageBox.Show("Книга успешно добавлена");
+
+            Close();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -135,5 +113,15 @@ namespace помогите_.Book
             _selectedChapter = (BookData.ChapterData)lvChapters.SelectedItem;
             btnDeleteChapter.IsEnabled = true;
         }
+
+
+
+        private void Назадд_Click(object sender, RoutedEventArgs e)
+        {
+            new TeacherWindow().Show();
+            Close();
+        }
+
+        
     }
 }

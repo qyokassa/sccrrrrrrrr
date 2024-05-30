@@ -25,6 +25,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Сохранить" Grid.Row="3" HorizontalAlignment="Center" Margin="10" Click="SaveButton_Click"/>
+        <Button Content="Сохранить" Grid.Row="3" HorizontalAlignment="Center" Margin="10" Click="SaveButton_Click"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
     </Grid>
 </Window>

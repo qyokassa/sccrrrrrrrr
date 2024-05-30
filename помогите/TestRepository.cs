@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using MySqlConnector;
 
@@ -7,6 +8,7 @@ namespace помогите_
 {
     internal class TestRepository
     {
+        
 
 
 
@@ -23,6 +25,8 @@ namespace помогите_
 
         internal void AddQuestion(Questions questions, int idTest)
         {
+           
+
             int idQuestion = MySqlDB.Instance.GetAutoID("questions");
             questions.ID = idQuestion;
             string sql = "INSERT INTO questions VALUES (0, @qtid, @qtext)";
@@ -30,7 +34,7 @@ namespace помогите_
             {
                 mc.Parameters.AddWithValue("qtid", idTest);
                 mc.Parameters.AddWithValue("qtext", questions.QuestionText);
-                mc.ExecuteNonQuery();
+                
             }
             sql = "INSERT INTO answers VALUES (0, @atext, @correct, @qid)";
             foreach (var answer in questions.Answers)
@@ -40,7 +44,7 @@ namespace помогите_
                     mc.Parameters.AddWithValue("atext", answer.Title);
                     mc.Parameters.AddWithValue("correct", answer.Correct);
                     mc.Parameters.AddWithValue("qid", idQuestion);
-                    mc.ExecuteNonQuery();
+                    
                 }
             }
 
@@ -98,9 +102,9 @@ namespace помогите_
             {
                 mc.Parameters.AddWithValue("testname", testTitile);
                 mc.Parameters.AddWithValue("userid", user.ID);
-                mc.ExecuteNonQuery();
+                
             }
-            return new TestInfo { ID = id, Author = user.Surname, IDAuthor = user.ID, Name = testTitile, NumberOfQuestions = 0 };
+            return new TestInfo { ID = id, Author = user.Surname, IDAuthor = user.ID, Name = testTitile, NumberOfQuestions = 1 };
         }
 
         internal List<Answer> GetAnswerByQuestion(int id)
@@ -159,14 +163,12 @@ namespace помогите_
                     mc.Parameters.AddWithValue("atext", answer.Title);
                     mc.Parameters.AddWithValue("correct", answer.Correct);
                     mc.Parameters.AddWithValue("qid", questions.ID);
-                    mc.ExecuteNonQuery();
+                   
                 }
             }
         }
 
-        internal void AddQuestion(object questions, int iD)
-        {
-            throw new NotImplementedException();
-        }
+       
+
     }
 }

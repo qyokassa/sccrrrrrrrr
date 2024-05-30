@@ -32,8 +32,8 @@ namespace помогите_
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Register register = new Register();
-            register.Show();
+         new Register().Show();
+            Close();
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

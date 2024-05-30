@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Data.Sqlite;
 
 namespace помогите_.Book
 {
@@ -28,8 +30,16 @@ namespace помогите_.Book
 
         public LibraryWindow()
         {
-            
             InitializeComponent();
+
+
+            _library = new Library();
+
+            lvBooks.ItemsSource = _library.Books;
+
+
+
+          
         }
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
@@ -41,6 +51,7 @@ namespace помогите_.Book
 
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
         {
+
             if (_selectedBook == null)
                 return;
 
@@ -48,21 +59,35 @@ namespace помогите_.Book
 
             if (result == MessageBoxResult.Yes)
                 _library.Books.Remove(_selectedBook);
+
+
         }
 
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void CancelChanges_Click(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void lvBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+            if (lvBooks.SelectedItem == null)
+            {
+                btnDeleteBook.IsEnabled = false;
+                
+                return;
+            }
+
+            _selectedBook = (BookData)lvBooks.SelectedItem;
+            btnDeleteBook.IsEnabled = true;
+        }
+
+       
+
+        private void Назад_Click1(object sender, RoutedEventArgs e)
+        {
+            new TeacherWindow().Show();
+            Close();
         }
     }
 }
+

@@ -42,16 +42,26 @@ namespace помогите_
         {
             Test test = new Test();
             test.Show();
-            this.Close();
+           
         }
 
         private void CreateTextbookButton_Click(object sender, RoutedEventArgs e)
         {
 
-          LibraryWindow libraryWindow = new LibraryWindow();
-            libraryWindow.Show();
-               
+         new LibraryWindow().Show();
+            Close();
 
+        }
+
+        private void ViewTestResultsutton_Click(object sender, RoutedEventArgs e)
+        {
+          
+        }
+
+        private void Назадд1_Click(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+            login.Show();
         }
     }
 }

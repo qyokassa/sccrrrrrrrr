@@ -9,6 +9,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFAD8077"/>
+                <GradientStop Color="#FFFFC9AF" Offset="1"/>
+                <GradientStop Color="#FFE8AA93" Offset="0.499"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
 
             <RowDefinition/>
@@ -28,9 +35,9 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock  Grid.Column="1" Grid.ColumnSpan="2" Text="Добро Пожаловать" FontSize="30" FontWeight="Light" HorizontalAlignment="Center" Margin="0,0,0,73"/>
-        <Button Grid.Column="1" Grid.Row="1" Height="100" Width="150" Content="Регистрация" Click="Button_Click"/>
-        <Button Grid.Column="2" Grid.Row="1" Height="100" Width="150" Content="Вход" Click="Button_Click_1"/>
+        <TextBlock  Grid.Column="0" Grid.ColumnSpan="4" Text="Добро Пожаловать" FontSize="30" FontWeight="Light" Margin="0,1,0,73" FontFamily="sitka text" Foreground="#FF4B3025" HorizontalAlignment="Center"/>
+        <Button Grid.Column="1" Grid.Row="1" Height="100" Width="150" Content="Регистрация" Click="Button_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" BorderBrush="#00000000"/>
+        <Button Grid.Column="2" Grid.Row="1" Height="100" Width="150" Content="Вход" Click="Button_Click_1"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>

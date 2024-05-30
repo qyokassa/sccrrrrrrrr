@@ -7,6 +7,48 @@
         mc:Ignorable="d"
         Title="LibraryTest" Height="450" Width="800">
     <Grid>
-        
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Название:" Grid.Row="1"/>
+        <Label x:Name="txtTestTitle" Grid.Row="1" Margin="100,0,0,0"/>
+
+        <Label Content="Кол-во вопросов:" Grid.Row="2"/>
+        <Label x:Name="txtNunQ" Grid.Row="2" Margin="100,0,0,0"/>
+
+
+
+
+
+        <Label Content="Вопросы:" Grid.Row="6"/>
+        <Button Content="Сохранить тест" Click="AddTest_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" Height="19" Margin="0,333,0,4" Grid.Row="7"/>
+
+        <ListView x:Name="lvQ" Grid.Row="7" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lvQ_SelectionChanged" Margin="0,36,0,28" Background="#FFEBC7C7">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock  FontWeight="Bold"/>
+                        <TextBlock  TextWrapping="Wrap"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+          
+        </ListView>
+
     </Grid>
 </Window>

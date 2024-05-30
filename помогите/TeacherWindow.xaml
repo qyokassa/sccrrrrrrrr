@@ -11,22 +11,22 @@
     <Grid>
 
         <Grid.RowDefinitions>
-            
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                    
-           
+
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+
+
         </Grid.RowDefinitions>
-        
-        
 
-            <Button Content="Создать учебник" Click="CreateTextbookButton_Click" Grid.Row="0" Margin="10"/>
-            <Button Content="Создать тест" Click="CreateTestButton_Click" Grid.Row="1" Margin="10"/>
-            <Button Content="Библиотека учебников" Click="TextbookLibraryButton_Click" Grid.Row="2" Margin="10"/>
-            <Button Content="Просмотр результатов теста" Click="ViewTestResultsButton_Click" Grid.Row="3" Margin="10"/>
 
+
+        <Button Content="Создать учебник" Click="CreateTextbookButton_Click" Grid.Row="0" Margin="10" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Создать тест" Click="CreateTestButton_Click" Grid.Row="1" Margin="10" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Библиотека учебников" Click="TextbookLibraryButton_Click" Grid.Row="2" Margin="10" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Библиотека тестов" Click="ViewTestResultsutton_Click" Grid.Row="3" Margin="10" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Назад" Grid.Row="3" Click="Назадд1_Click" Margin="741,278,0,-268"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" HorizontalAlignment="Left" Width="49"/>
         <Grid VerticalAlignment="Center"/>
 
     </Grid>

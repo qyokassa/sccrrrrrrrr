@@ -23,8 +23,16 @@ namespace помогите_
     /// <summary>
     /// Логика взаимодействия для Test.xaml
     /// </summary>
-    public partial class Test : Window
+    public partial class Test : LibraryTest
+
     {
+        private ObservableCollection<TestInfo> Selectedtests { get; set; }
+
+        private TestInfo _selectedTest;
+
+        public ObservableCollection<Questions> ItemsList { get; set; } = new ObservableCollection<Questions>();
+
+
         TestInfo testInfo;
         private object addQuestion;
 
@@ -36,23 +44,23 @@ namespace помогите_
         {
             InitializeComponent();
             testInfo = new TestInfo();
-            DataContext = this;
+
         }
         public Test(TestInfo edit)
         {
             InitializeComponent();
             testInfo = edit;
-            DataContext = this;
+
         }
 
 
-        
+
 
         private void AddQuestion_Click(object sender, RoutedEventArgs e)
         {
             if (testInfo.ID == 0)
             {
-                testInfo = TestRepository.Instance.AddTest(TestTitile, ActiveUser.Instance.User);
+                testInfo = TestRepository.Instance.AddTest(TestTitile, user: ActiveUser.Instance.User);
             }
             AddQuestionWindow addQuestion = new AddQuestionWindow();
             if (addQuestion.ShowDialog() == true)
@@ -60,12 +68,16 @@ namespace помогите_
                 TestRepository.Instance.AddQuestion(addQuestion.Questions, testInfo.ID);
                 Questions.Add(addQuestion.Questions);
             }
+
+
+
+
         }
 
         private void EditQuestion(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
-            помогите_. Questions  questions = button.Tag as Questions;
+            помогите_.Questions questions = button.Tag as Questions;
             AddQuestionWindow addQuestion = new AddQuestionWindow(questions);
             if (addQuestion.ShowDialog() == true)
             {
@@ -94,20 +106,40 @@ namespace помогите_
 
         }
 
-       
+
+
+
+
+
 
         private void SaveTest_Click(object sender, RoutedEventArgs e)
         {
+
            
 
 
+            LibraryTest library = new LibraryTest();
+            library.SetInfo(nameTest.Text);
+            library.SetInfo1(question.Text);
 
+
+
+            library.Show();
+
+
+
+
+
+
+            MessageBox.Show("Информация о тесте сохранена успешно!");
 
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        internal void Show()
         {
-
+            throw new NotImplementedException();
         }
     }
 }
+
+

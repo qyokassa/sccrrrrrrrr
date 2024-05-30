@@ -16,6 +16,8 @@
 
 
 
+
+
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
@@ -27,14 +29,21 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Регистрация" FontSize="30" FontWeight="Light" HorizontalAlignment="Center"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Name}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,10,0,145" Background="#FFD2D2D2"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Surname}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,77,0,77" Background="#FFD2D2D2"/>
-        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Login}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,144,0,10" Background="#FFD2D2D2"/>
-        <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Password}" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="376" Margin="0,10,0,144" Background="#FFD2D2D2"/>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFAB8379" Offset="0.001"/>
+                <GradientStop Color="#FF2C1313" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
 
-        <RadioButton Content="Студент" Grid.Column="1" Margin="0,63,100,94" Grid.Row="2"/>
-        <RadioButton IsChecked="{Binding User.Teacher}" Content="Преподаватель" Grid.Column="2" Margin="50,63,24,94" Grid.Row="2"/>
-        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Вход" FontSize="20" FontWeight="Light" HorizontalAlignment="Left" Width="100" Margin="140,119,0,35" Background="#FFD2D2D2" Click="Button_Click"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Text="Регистрация" FontSize="30" FontWeight="Light" HorizontalAlignment="Center" FontFamily="Sitka Text" Foreground="#FF4C3333"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Name}" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Width="400" Height="40" Background="#FFD2D2D2" Margin="0,59,0,98"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Surname}" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Width="400" Height="40" Background="#FFD2D2D2" Margin="0,117,0,40"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Login}" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Width="400" Height="40" Background="#FFD2D2D2" Margin="0,10,0,147"/>
+        <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Text="{Binding User.Password}" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Width="400" Height="40" Background="#FFD2D2D2" Grid.RowSpan="2"/>
+
+        <RadioButton Content="Студент" Grid.Column="1" Margin="0,34,67,123" Grid.Row="2" FontFamily="Sitka Text" Checked="RadioButton_Checked" HorizontalAlignment="Right" Width="100"/>
+        <RadioButton IsChecked="{Binding User.Teacher}" Content="Преподаватель" FontFamily="Sitka TextSitka Text" Grid.Column="2" Margin="0,34,83,123" Grid.Row="2" />
+        <Button Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Content="Вход" FontSize="20" FontWeight="Light" HorizontalAlignment="Center" Width="100" Height="50" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" Click="Button_Click"/>
     </Grid>
 </Window>
