@@ -32,10 +32,19 @@ namespace помогите_
         public void SetInfo(string info)
         {
             txtTestTitle.Content = info;
-            txtNunQ.Content = info;
+            
     
         
         }
+
+        public void SetInfo2(string info)
+        {
+           author.Content = info;
+
+
+
+        }
+
 
         public void SetInfo1(string info)
         {
@@ -52,6 +61,8 @@ namespace помогите_
         {
            
         }
+
+       
     }
 
 }

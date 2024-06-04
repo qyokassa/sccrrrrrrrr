@@ -42,6 +42,7 @@ namespace помогите_
         {
             Test test = new Test();
             test.Show();
+            this.Close();
            
         }
 
@@ -62,6 +63,7 @@ namespace помогите_
         {
             Login login = new Login();
             login.Show();
+            Close();
         }
     }
 }

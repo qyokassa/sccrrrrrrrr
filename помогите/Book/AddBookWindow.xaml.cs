@@ -34,14 +34,13 @@ namespace помогите_.Book
             _bookToAdd = new BookData();
 
             InitializeComponent();
-
-            DataContext=BookRepository.Instance;
-
+            
             btnDeleteChapter.IsEnabled = false;
             lvChapters.ItemsSource = _bookToAdd.Chapters;
             labelChapterCount.Content = _bookToAdd.Chapters.Count.ToString();
 
-            // Подписываемся на событие, которое будет обновлять поле, отображающее количество глав, если количество глав будет изменяться.
+            txtAuthor.Text = ActiveUser.Instance.User.Name;
+
             _bookToAdd.Chapters.CollectionChanged += (sender, e) =>
             {
                 labelChapterCount.Content = _bookToAdd.Chapters.Count;
@@ -79,17 +78,13 @@ namespace помогите_.Book
             }
 
             _bookToAdd.Title = txtBookTitle.Text;
-            _bookToAdd.Author = txtAuthor.Text;
+            _bookToAdd.AuthorID = ActiveUser.Instance.User.ID;
             _bookToAdd.Year = year;
             _bookToAdd.Annotation = txtAnnotation.Text;
 
            
             
            _library.Books.Add(_bookToAdd);
-
-
-
-
 
 
             MessageBox.Show("Книга успешно добавлена");

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="AddQuestionWindow" Height="450" Width="800">
 
-    <Grid DataContext="{Binding Questions}">
+    <Grid DataContext="{Binding Questions}" Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -15,16 +15,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Введите вопрос:"/>
+        <Label Content="Введите вопрос:" FontFamily="Sitka Display"/>
         <TextBox Text="{Binding QuestionText}" Grid.Row="1"/>
 
-        <DataGrid Grid.Row="2" ItemsSource="{Binding Answers}" AutoGenerateColumns="False">
+        <DataGrid Grid.Row="2" ItemsSource="{Binding Answers}" FontFamily="Sitka Display" AutoGenerateColumns="False">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Текст варианта ответа" Width="300" Binding="{Binding Title}"/>
+                <DataGridTextColumn Header="Текст варианта ответа"  Width="300" Binding="{Binding Title}"/>
                 <DataGridCheckBoxColumn Header="Правильный ответ" Binding="{Binding Correct}" />
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Content="Сохранить" Grid.Row="3" HorizontalAlignment="Center" Margin="10" Click="SaveButton_Click"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+        <Button Content="Сохранить" Grid.Row="3" FontFamily="Sitka Display" HorizontalAlignment="Center" Background="#FFAD8077" Margin="10" Click="SaveButton_Click"/>
     </Grid>
 </Window>

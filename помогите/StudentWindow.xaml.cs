@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using помогите_.Book;
 
 namespace помогите_
 {
@@ -26,7 +27,7 @@ namespace помогите_
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            new LibraryWindow().Show();
         }
     }
 }

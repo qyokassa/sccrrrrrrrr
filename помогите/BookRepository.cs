@@ -26,8 +26,12 @@ namespace помогите_
             }
         }
 
-        internal IEnumerable<BookData> GetAllBooks(string sql)
+        internal IEnumerable<BookData> GetAllBooks(int userID)
         {
+            string sql = "SELECT books.id, books.book, books.annotation, books.`year`, books.author, users.firstname FROM books INNER JOIN users ON books.author = users.id";
+            if (userID != 0)
+                sql += " where books.author = " + userID;
+
             var result = new List<BookData>();
             var connect = MySqlDB.Instance.GetConnection();
             if (connect == null)
@@ -40,23 +44,14 @@ namespace помогите_
                 while (reader.Read())
                 {
                     id = reader.GetInt32("id");
-                    book = result.FirstOrDefault(s => s.Id == id);
-                    if (book == null)
-                    {
-                        book = new BookData();
-                        result.Add(book);
-                        book.Id = id;
-                        book.Title = reader.GetString("Title");
-                        book.Author = reader.GetString("Author");
-                        book.Year = reader.GetInt32("Year");
-                        book.Annotation = reader.GetString("Annotation");
-                        if (!reader.IsDBNull(reader.GetOrdinal("Image")))
-                        {
-                           
-                        }
-                    }
-                   
-                   
+                    book = new BookData();
+                    result.Add(book);
+                    book.Id = id;
+                    book.Title = reader.GetString("book");
+                    book.Author = reader.GetString("firstname");
+                    book.AuthorID = reader.GetInt32("author");
+                    book.Year = reader.GetInt32("year");
+                    book.Annotation = reader.GetString("annotation");
                 }
             }
 
@@ -76,14 +71,29 @@ namespace помогите_
             {
                 mc.Parameters.Add(new MySqlParameter("book", book.Title));
                 mc.Parameters.Add(new MySqlParameter("annotation", book.Annotation));
-                mc.Parameters.Add(new MySqlParameter("year",   book.Year));
-                mc.Parameters.Add(new MySqlParameter("author", book.Author));
-              
-               
+                mc.Parameters.Add(new MySqlParameter("year", book.Year));
+                mc.Parameters.Add(new MySqlParameter("author", book.AuthorID));
+                mc.ExecuteNonQuery();
+
+                if (book.Chapters.Count > 0)
+                {
+                    sql = "INSERT INTO chapter VALUES (0, @chapter_name, @info_chapter, @id_book)";
+                    foreach (var chapter in book.Chapters)
+                    {
+                        using (var mcc = new MySqlCommand(sql, connect))
+                        {
+                            mcc.Parameters.Add(new MySqlParameter("chapter_name", chapter.Name));
+                            mcc.Parameters.Add(new MySqlParameter("info_chapter", chapter.Content));
+                            mcc.Parameters.Add(new MySqlParameter("id_book", id));
+
+                            mcc.ExecuteNonQuery();
+                        }
+                    }
+                }
             }
         }
 
-        internal void Remove(BookData book )
+        internal void Remove(BookData book)
         {
             var connect = MySqlDB.Instance.GetConnection();
             if (connect == null)
@@ -96,9 +106,9 @@ namespace помогите_
                 mc.ExecuteNonQuery();
         }
 
-       
 
-        internal void UpdateBook(BookData book )
+
+        internal void UpdateBook(BookData book)
         {
             var connect = MySqlDB.Instance.GetConnection();
             if (connect == null)
@@ -109,7 +119,7 @@ namespace помогите_
                 mc.ExecuteNonQuery();
 
             sql = "";
-           
+
 
             sql = "UPDATE books SET book = @book, annotation = @annotation, year = @year, author = @author = " + book.Id;
             using (var mc = new MySqlCommand(sql, connect))
@@ -118,8 +128,30 @@ namespace помогите_
                 mc.Parameters.Add(new MySqlParameter("annotation", book.Annotation));
                 mc.Parameters.Add(new MySqlParameter("year", book.Year));
                 mc.Parameters.Add(new MySqlParameter("author", book.Author));
-               
+
                 mc.ExecuteNonQuery();
+            }
+        }
+
+        internal void FillChapters(BookData selectedBook)
+        {
+            string sql = "SELECT chapter.id, chapter.chapter_name, chapter.info_chapter FROM chapter WHERE chapter.id_book = " + selectedBook.Id;
+
+            var connect = MySqlDB.Instance.GetConnection();
+            if (connect == null)
+                return;
+            using (var mc = new MySqlCommand(sql, connect))
+            using (var reader = mc.ExecuteReader())
+            {
+                selectedBook.Chapters.Clear();
+
+                while (reader.Read())
+                {
+                    int id = reader.GetInt32("id");
+                    BookData.ChapterData ch = new BookData.ChapterData(reader.GetString("chapter_name"), reader.GetString("info_chapter"));
+                    ch.Id = id;
+                    selectedBook.Chapters.Add(ch);
+                }
             }
         }
     }

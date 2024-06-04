@@ -32,6 +32,9 @@ namespace помогите_.Book
         {
             InitializeComponent();
 
+            btnAddBook.IsEnabled = ActiveUser.Instance.User.Teacher;
+            btnDeleteBook.IsEnabled = ActiveUser.Instance.User.Teacher;
+            btnSave.IsEnabled = ActiveUser.Instance.User.Teacher;
 
             _library = new Library();
 
@@ -39,7 +42,8 @@ namespace помогите_.Book
 
 
 
-          
+
+
         }
 
         private void AddBook_Click(object sender, RoutedEventArgs e)
@@ -47,6 +51,8 @@ namespace помогите_.Book
 
             AddBookWindow addBookWindow = new AddBookWindow(_library, _libraryDatabase);
             addBookWindow.Show();
+
+
         }
 
         private void DeleteBook_Click(object sender, RoutedEventArgs e)
@@ -69,24 +75,40 @@ namespace помогите_.Book
 
         private void lvBooks_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+           
             if (lvBooks.SelectedItem == null)
             {
                 btnDeleteBook.IsEnabled = false;
-                
+                btnWatchBook.IsEnabled = false;
                 return;
             }
 
             _selectedBook = (BookData)lvBooks.SelectedItem;
-            btnDeleteBook.IsEnabled = true;
+        
+            btnWatchBook.IsEnabled = true;
+
+            if (ActiveUser.Instance.User.Teacher)
+                btnDeleteBook.IsEnabled = true;
         }
 
-       
+
 
         private void Назад_Click1(object sender, RoutedEventArgs e)
         {
-            new TeacherWindow().Show();
+            if (ActiveUser.Instance.User.Teacher)
+                new TeacherWindow().Show();
             Close();
+        }
+
+        private void WatchBook_Click(object sender, RoutedEventArgs e)
+        {
+            if (_selectedBook == null)
+                return;
+
+            BookRepository.Instance.FillChapters(_selectedBook);
+
+            BookViewing bookViewing = new BookViewing(_selectedBook);
+            bookViewing.Show();
         }
     }
 }

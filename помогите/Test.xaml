@@ -24,48 +24,40 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <Label Content="Название теста:" />
+        <Label Content="Название теста:" FontFamily="Sitka Display" />
         <TextBox x:Name="nameTest" Text="{Binding TestTitile}"  Width="200"  Grid.ColumnSpan="2" Margin="133,0,0,0" Grid.RowSpan="2" Height="26" VerticalAlignment="Top"/>
 
-        <Label Content="Количество вопросов:" Grid.Row="1"/>
+        <Label Content="Количество вопросов:" FontFamily="Sitka Display" Grid.Row="1"/>
         <TextBox x:Name="question" Grid.Row="1" Width="200" Grid.Column="1" />
 
-        <Label Content="Автор:" Grid.Row="2" />
+        <Label Content="Автор:" FontFamily="Sitka Display" Grid.Row="2"  />
         <TextBlock Text="{Binding UserTitile}" Grid.Row="2" Grid.Column="1" Width="200" />
 
         <Button Content="Добавить вопрос" Grid.Row="3" HorizontalAlignment="Left" Margin="10" Click="AddQuestion_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
-        <ListView x:Name="lvTextq" Grid.Row="4" Grid.ColumnSpan="2" ItemsSource="{Binding Questions}">
+        <ListView x:Name="lvTextq" Grid.Row="4" FontFamily="Sitka Display" Grid.ColumnSpan="3" ItemsSource="{Binding Questions}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Текст вопроса" DisplayMemberBinding="{Binding QuestionText}"/>
-                   
-                   
-                    
                     <GridViewColumn >
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
 
                                 <StackPanel>
-                                    <Button Content="Редактировать" Tag="{Binding}" Click="EditQuestion"/>
-                                    <Button Content="Удалить" Tag="{Binding}" Click="Delite_Question"/>
+                                    <Button Content="Редактировать"  Background="#FFAD8077" Tag="{Binding}" Click="EditQuestion"/>
+                                    <Button Content="Удалить"  Background="#FFAD8077"  Tag="{Binding}" Click="Delite_Question"/>
                                 </StackPanel>
 
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
-                       
-                        
                     </GridViewColumn>
-                    
                 </GridView>
-                
             </ListView.View>
-            
         </ListView>
-        
 
 
-        <Button Content="Сохранить тест" Grid.Row="5" HorizontalAlignment="Right" Margin="0,6,10,14" Click="SaveTest_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+
+        <Button Content="Сохранить тест" Grid.Row="5" HorizontalAlignment="Right" Margin="0,0,10,14" Click="SaveTest_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" Height="19" VerticalAlignment="Bottom"/>
     </Grid>
 
 </Window>

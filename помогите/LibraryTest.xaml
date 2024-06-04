@@ -35,10 +35,11 @@
 
 
 
-        <Label Content="Вопросы:" Grid.Row="6"/>
+        <Label x:Name="author" Content="Автор:"  Grid.Row="6"/>
         <Button Content="Сохранить тест" Click="AddTest_Click" Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B" Height="19" Margin="0,333,0,4" Grid.Row="7"/>
 
-        <ListView x:Name="lvQ" Grid.Row="7" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lvQ_SelectionChanged" Margin="0,36,0,28" Background="#FFEBC7C7">
+
+        <ListView x:Name="lvQ" Grid.Row="7" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled" SelectionChanged="lvQ_SelectionChanged" Margin="0,36,0,28" Background="{x:Null}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical">
@@ -47,7 +48,7 @@
                     </StackPanel>
                 </DataTemplate>
             </ListView.ItemTemplate>
-          
+
         </ListView>
 
     </Grid>

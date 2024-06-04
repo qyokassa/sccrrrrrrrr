@@ -14,9 +14,10 @@
 
         <!-- Кнопки "Добавить книгу" и "Удалить книгу" -->
         <StackPanel Orientation="Horizontal">
-            <Button Content="Добавить книгу" Click="AddBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+            <Button x:Name="btnAddBook" Content="Добавить книгу" Click="AddBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
             <Button x:Name="btnDeleteBook" Content="Удалить книгу" Click="DeleteBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
-            <Button Content="Сохранить изменения" Click="SaveChanges_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+            <Button x:Name="btnSave" Content="Сохранить изменения" Click="SaveChanges_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
+            <Button x:Name="btnWatchBook" Content="Просмотреть книгу" Click="WatchBook_Click" Margin="0,0,10,0"  Background="#FFAD8077" FontFamily="Sitka Display" Foreground="#FF2F1B1B"/>
 
         </StackPanel>
 

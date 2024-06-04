@@ -23,34 +23,28 @@ namespace помогите_
     /// <summary>
     /// Логика взаимодействия для Test.xaml
     /// </summary>
-    public partial class Test : LibraryTest
+    public partial class Test : Window
 
     {
-        private ObservableCollection<TestInfo> Selectedtests { get; set; }
-
-        private TestInfo _selectedTest;
-
-        public ObservableCollection<Questions> ItemsList { get; set; } = new ObservableCollection<Questions>();
-
-
         TestInfo testInfo;
         private object addQuestion;
 
         public string UserTitile { get => ActiveUser.Instance.User.Surname; }
         public string TestTitile { get; set; }
+        
 
         public ObservableCollection<Questions> Questions { get; set; } = new();
         public Test()
         {
             InitializeComponent();
             testInfo = new TestInfo();
-
+            DataContext = this;
         }
         public Test(TestInfo edit)
         {
             InitializeComponent();
             testInfo = edit;
-
+            DataContext = this;
         }
 
 
@@ -60,7 +54,7 @@ namespace помогите_
         {
             if (testInfo.ID == 0)
             {
-                testInfo = TestRepository.Instance.AddTest(TestTitile, user: ActiveUser.Instance.User);
+                testInfo = TestRepository.Instance.AddTest(TestTitile, ActiveUser.Instance.User);
             }
             AddQuestionWindow addQuestion = new AddQuestionWindow();
             if (addQuestion.ShowDialog() == true)
@@ -68,9 +62,6 @@ namespace помогите_
                 TestRepository.Instance.AddQuestion(addQuestion.Questions, testInfo.ID);
                 Questions.Add(addQuestion.Questions);
             }
-
-
-
 
         }
 
@@ -115,30 +106,24 @@ namespace помогите_
         private void SaveTest_Click(object sender, RoutedEventArgs e)
         {
 
+            LibraryTest infoWindow = new LibraryTest();
+            infoWindow.SetInfo(TestTitile);
+
+
+            infoWindow.SetInfo1(question.Text);
+
+            infoWindow.SetInfo2(UserTitile);
+          
+
+            infoWindow.Show();
            
-
-
-            LibraryTest library = new LibraryTest();
-            library.SetInfo(nameTest.Text);
-            library.SetInfo1(question.Text);
-
-
-
-            library.Show();
-
-
-
-
 
 
             MessageBox.Show("Информация о тесте сохранена успешно!");
 
         }
 
-        internal void Show()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
 
